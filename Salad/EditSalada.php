@@ -3,10 +3,10 @@
     ini_set('error_reporting', E_ALL);
 
 	
-	if ( !empty($_GET['idMistura']))
+	if ( !empty($_GET['idSalada']))
             {
-        $idMistura = $_REQUEST['idMistura'];
-        echo $idMistura;
+        $idSalada = $_REQUEST['idSalada'];
+        echo $idSalada;
             }
 
 
@@ -18,15 +18,15 @@
                             $pdo = Banco::conectar();
 
                             $descricao = $_POST['descricao'];
-                            $stmt = $pdo->prepare("UPDATE mistura SET descricao = :DESCRICAO WHERE idMistura = :IDMISTURA");
+                            $stmt = $pdo->prepare("UPDATE salada SET descricao = :DESCRICAO WHERE idSalada = :IDSALADA");
                             
                         
                             $stmt->bindParam(":DESCRICAO", $descricao);
-                            $stmt->bindParam(":IDMISTURA", $idMistura);
+                            $stmt->bindParam(":IDSALADA", $idSalada);
                             $stmt->execute();
 
                             
-                            header("Location: LstMistura.php");
+                            header("Location: LstSalada.php");
 		}
 	}
         else
@@ -35,12 +35,12 @@
                 $pdo = Banco::conectar();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $id = intval($id);
-                $sql = "SELECT * FROM mistura WHERE idMistura =" . $id;
+                $sql = "SELECT * FROM salada WHERE idSalada =" . $id;
                 $q = $pdo->prepare($sql);
                 $q->execute();
                 $data = $q->fetch(PDO::FETCH_ASSOC);
                 $descricao = $data['descricao'];
-                $idMistura = $data['idMistura'];
+                $idSalada = $data['idSalada'];
                 Banco::desconectar();
     }
 
@@ -67,12 +67,12 @@
         <h3 class="well">Editar Alimento Principal</h3>
     </div>
                     <div class="card-body">
-            <form class="form-horizontal" action="EditMistura.php?idMistura=<?php echo $idMistura?>" method="post">
+            <form class="form-horizontal" action="EditSalada.php?idSalada=<?php echo $idSalada?>" method="post">
 
         <div class="control-group">
             <label class="control-label">ID</label>
             <div class="controls">
-            <input name="idMistura" readonly="true" class="form-control" size="10" type="number" placeholder="ID" value="<?php echo !empty($idMistura)?$idMistura:'';?>">
+            <input name="idSalada" readonly="true" class="form-control" size="10" type="number" placeholder="ID" value="<?php echo !empty($idSalada)?$idSalada:'';?>">
             </div>
         </div>
 
@@ -86,7 +86,7 @@
 
         <br/>
         <div class="form-actions">
-            <a class="btn btn-primary" href="LstMistura.php">Voltar</a>
+            <a class="btn btn-primary" href="LstSalada.php">Voltar</a>
             <button type="submit" class="btn btn-success">Atualizar</button>
             
         </div>

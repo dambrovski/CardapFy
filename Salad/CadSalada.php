@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <title>Cadastrar Mistura</title>
+    <title>Cadastrar Salada</title>
 </head>
 
 <body>
@@ -12,13 +12,13 @@
         <div clas="span10 offset1">
           <div class="card">
             <div class="card-header">
-                <h3 class="well"> Bem Vindo ao Cadastro de Misturas! </h3>
+                <h3 class="well"> Bem Vindo ao Cadastro de Saladas! </h3>
             </div>
             <div class="card-body">
-            <form class="form-horizontal" action="CadMistura.php" method="post">
+            <form class="form-horizontal" action="CadSalada.php" method="post">
 
                 <div class="control-group <?php echo !empty($nomeErro)?'error ' : '';?>">
-                    <label class="control-label">Descrição da Mistura: </label>
+                    <label class="control-label">Descrição da Salada: </label>
                     <div class="controls">
                         <input size="50" class="form-control" name="descricao" type="text" placeholder="Descrição" required="" value="<?php echo !empty($descricao)?$descricao: '';?>">
                         <?php if(!empty($descricaoErro)): ?>
@@ -59,7 +59,7 @@
         $validacao = true;
         if(empty($descricao))
         {
-            $descricaoErro = 'Por favor digite a Descrição da Mistura!';
+            $descricaoErro = 'Por favor digite a Descrição da Salada!';
             $validacao = false;
         }
 
@@ -68,7 +68,7 @@
         {
             $pdo = Banco::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO mistura (descricao) VALUES(?)";
+            $sql = "INSERT INTO salada (descricao) VALUES(?)";
             $q = $pdo->prepare($sql);
             $q->execute(array($descricao));
             Banco::desconectar();

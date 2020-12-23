@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <title>Listagem Mistura</title>
+    <title>Listagem Salada</title>
 </head>
 
 <body>
@@ -31,17 +31,17 @@
                         <?php
                         include '../Banco/banco.php';
                         $pdo = Banco::conectar();
-                        $sql = 'SELECT * FROM mistura ORDER BY idMistura ASC';
+                        $sql = 'SELECT * FROM extra ORDER BY idExtra ASC';
 
                         foreach($pdo->query($sql)as $row)
                         {
                             echo '<tr>';
-                            echo '<th scope="row">'. $row['idMistura'] . '</th>';
+                            echo '<th scope="row">'. $row['idExtra'] . '</th>';
                             echo '<td>'. $row['descricao'] . '</td>';
                             echo '<td width=200>';
-                            echo '<a class="btn btn-info" href="EditMistura.php?id='.$row['idMistura'].'">Editar</a>';
+                            echo '<a class="btn btn-info" href="EditExtra.php?id='.$row['idExtra'].'">Editar</a>';
                             echo ' ';
-                            echo '<a class="btn btn-danger" href="delete.php?id='.$row['idMistura'].'">Excluir</a>';
+                            echo '<a class="btn btn-danger" href="delete.php?id='.$row['idExtra'].'">Excluir</a>';
                             echo '</td>';
                             echo '</tr>';
                         }

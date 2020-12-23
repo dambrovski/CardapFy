@@ -4,68 +4,58 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
     <title>CardapFy</title>
 </head>
 
 <body>
+    
         <div class="container">
           <div class="jumbotron">
             <div class="row">
-                <h2>CardapFy <span class="badge badge-secondary">1.0</span></h2>
+            <?php
+                $hour = date("H"); 
+                setlocale(LC_TIME,"portuguese"); 
+                $hour = strftime("%d/%b/%Y"); 
+                echo "<h2>CardapFy <span class='badge badge-secondary'>1.0 - $hour</span>"
+                ?> 
+            </h2>
             </div>
           </div>
             </br>
-            <table>
-            <div class="row">
-                <tr>
-                    <td class="td-cadastro">
-                    <a href="./AliPri/CadAliPrincipal.php" class="btn btn-success">Cadastrar Alimento Principal!</a>
-                    </td>
-                    <td>
-                        <a href="./AliPri/LstAliPrincipal.php" class="btn btn-primary">Listar Alimentos Principais!</a>
-                    </td>
-                </tr>
+            <nav class="dropdownmenu">
+  <ul>
+    <li><a href="#">Cadastrar Alimentos</a>
+      <ul id="submenu">
+        <li><a href="./AliPri/CadAliPrincipal.php">Cadastrar Alimento Principal</a></li>
+        <li><a href="./AliSec/CadAliSecundario.php">Cadastrar Alimento Secundário</a></li>
+        <li><a href="./Mist/CadMistura.php">Cadastrar Mistura</a></li>
+        <li><a href="./Salad/CadSalada.php">Cadastrar Saladas</a></li>
+        <li><a href="./Ext/CadExtra.php">Cadastrar Extras</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Listar Alimentos</a>
+      <ul id="submenu">
+        <li><a href="./AliPri/LstAliPrincipal.php">Listar Alimento Principal</a></li>
+        <li><a href="./AliSec/LstAliSecundario.php">Listar Alimento Secundário</a></li>
+        <li><a href="./Mist/LstMistura.php">Listar Mistura</a></li>
+        <li><a href="./Salad/LstSalada.php">Listar Saladas</a></li>
+        <li><a href="./Ext/LstExtra.php">Listar Extras</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Gerar Cardapios</a>
+      <ul id="submenu">
+        <li><a href="./AliPri/LstAliPrincipal.php">Gerar Cardapio Semanal</a></li>
+        <li><a href="./AliSec/LstAliSecundario.php">Consultar Cardapio Atual</a></li>
+        <li><a href="./Mist/LstMistura.php">Gerar Prato</a></li>
+        <li><a href="./Salad/LstSalada.php">Listar Saladas</a></li>
+        <li><a href="./Ext/LstExtra.php">Listar Extras</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
-                    <tr>
-                        <td class="td-cadastro">
-                            <a href="./AliSec/CadAliSecundario.php" class="btn btn-success">Cadastrar Alimento Secundário!</a>
-                        </td>
-                        <td>
-                            <a href="./AliSec/LstAliSecundario.php" class="btn btn-primary">Listar Alimentos Secundários!</a>
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <td>
-                        <a href="./Mist/CadMistura.php" class="btn btn-success">Cadastrar Mistura!</a>
-                        </td>
-                        <td>
-                            <a href="./Mist/LstMistura.php" class="btn btn-primary">Listar Misturas!</a>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                        <a href="create.php" class="btn btn-success">Cadastrar Salada!</a>
-                        </td>
-                        <td>
-                            <a href="create.php" class="btn btn-primary">Listar Saladas!</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <a href="create.php" class="btn btn-success">Cadastrar Extra!</a>
-                        </td>
-                        <td>
-                            <a href="create.php" class="btn btn-primary">Listar Extras!</a>
-                        </td>
-                    </tr>
-            </div>
-            </div>
-            
-            </table>
-            </div>
-            
 
                 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>

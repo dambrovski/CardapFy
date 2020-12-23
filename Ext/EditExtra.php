@@ -3,10 +3,10 @@
     ini_set('error_reporting', E_ALL);
 
 	
-	if ( !empty($_GET['idMistura']))
+	if ( !empty($_GET['idExtra']))
             {
-        $idMistura = $_REQUEST['idMistura'];
-        echo $idMistura;
+        $idExtra = $_REQUEST['idExtra'];
+        echo $idExtra;
             }
 
 
@@ -18,15 +18,15 @@
                             $pdo = Banco::conectar();
 
                             $descricao = $_POST['descricao'];
-                            $stmt = $pdo->prepare("UPDATE mistura SET descricao = :DESCRICAO WHERE idMistura = :IDMISTURA");
+                            $stmt = $pdo->prepare("UPDATE extra SET descricao = :DESCRICAO WHERE idExtra = :IDEXTRA");
                             
                         
                             $stmt->bindParam(":DESCRICAO", $descricao);
-                            $stmt->bindParam(":IDMISTURA", $idMistura);
+                            $stmt->bindParam(":IDEXTRA", $idExtra);
                             $stmt->execute();
 
                             
-                            header("Location: LstMistura.php");
+                            header("Location: LstExtra.php");
 		}
 	}
         else
@@ -35,12 +35,12 @@
                 $pdo = Banco::conectar();
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $id = intval($id);
-                $sql = "SELECT * FROM mistura WHERE idMistura =" . $id;
+                $sql = "SELECT * FROM extra WHERE idExtra =" . $id;
                 $q = $pdo->prepare($sql);
                 $q->execute();
                 $data = $q->fetch(PDO::FETCH_ASSOC);
                 $descricao = $data['descricao'];
-                $idMistura = $data['idMistura'];
+                $idExtra = $data['idExtra'];
                 Banco::desconectar();
     }
 
@@ -55,7 +55,7 @@
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
         <link rel="shortcut icon" href="favicon.ico">
         <link rel="icon" type="image/gif" href="https://i.ibb.co/tLHxMyS/animated-favicon1.gif">
-		<title>Editar Alimento Principal</title>
+		<title>Editar Extra</title>
     </head>
 
     <body>
@@ -67,12 +67,12 @@
         <h3 class="well">Editar Alimento Principal</h3>
     </div>
                     <div class="card-body">
-            <form class="form-horizontal" action="EditMistura.php?idMistura=<?php echo $idMistura?>" method="post">
+            <form class="form-horizontal" action="EditExtra.php?idExtra=<?php echo $idExtra?>" method="post">
 
         <div class="control-group">
             <label class="control-label">ID</label>
             <div class="controls">
-            <input name="idMistura" readonly="true" class="form-control" size="10" type="number" placeholder="ID" value="<?php echo !empty($idMistura)?$idMistura:'';?>">
+            <input name="idExtra" readonly="true" class="form-control" size="10" type="number" placeholder="ID" value="<?php echo !empty($idExtra)?$idExtra:'';?>">
             </div>
         </div>
 
@@ -86,7 +86,7 @@
 
         <br/>
         <div class="form-actions">
-            <a class="btn btn-primary" href="LstMistura.php">Voltar</a>
+            <a class="btn btn-primary" href="LstExtra.php">Voltar</a>
             <button type="submit" class="btn btn-success">Atualizar</button>
             
         </div>
